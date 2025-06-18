@@ -55,8 +55,19 @@ public class Conductor : MonoBehaviour
         Debug.Log(pms.currentSpeed);
 
         tempSecond += Time.deltaTime;
-        
-        if (tempSecond > 0)
+
+        if (Timer >= secPerHit)
+        {
+            if (!isPressed && currentSpeedBoost > 1)
+                EvaluateSpeedBoost(false);
+
+            Timer = 0;
+            movingIndicatorTransform.sizeDelta = startSize;
+            isPressed = false;
+            stationaryRhythmIndicator.color = stationaryNeutralColour;
+            movingRhythmIndicator.color = movingNeutralColour;
+        }
+        else if (tempSecond > 0)
         {
             Timer += tempSecond;
             tempSecond = 0;
@@ -77,16 +88,6 @@ public class Conductor : MonoBehaviour
 
     private void OnTimerChange(float value)
     {
-        if (value >= secPerHit)
-        {
-            Timer = 0;
-            movingIndicatorTransform.sizeDelta = startSize;
-            isPressed = false;
-            stationaryRhythmIndicator.color = stationaryNeutralColour;
-            movingRhythmIndicator.color = movingNeutralColour;
-            return;
-        }
-
         float t = value / secPerHit;
         t = Mathf.Clamp01(t);
         Vector2 changeSize = Vector2.Lerp(startSize, finishSize, t);
