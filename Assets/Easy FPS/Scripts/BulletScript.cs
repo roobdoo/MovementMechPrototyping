@@ -32,8 +32,11 @@ public class BulletScript : MonoBehaviour {
                 {
 					GameObject dummie = hit.transform.gameObject;
 					Dummie dummieScript = dummie.GetComponent<Dummie>();
-					float amount = Random.Range(10, 30);
-					dummieScript.UpdateVirus(amount);
+					if (dummieScript != null)
+					{
+                        float amount = Random.Range(10, 30);
+                        dummieScript.UpdateVirus(amount);
+                    }
 					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
 					Destroy(gameObject);
 				}

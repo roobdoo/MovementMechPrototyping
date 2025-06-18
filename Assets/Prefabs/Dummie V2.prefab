@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 7268746158097846882}
   - component: {fileID: 6759582163882496720}
   m_Layer: 0
-  m_Name: Dummie
+  m_Name: Dummie V2
   m_TagString: Dummie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

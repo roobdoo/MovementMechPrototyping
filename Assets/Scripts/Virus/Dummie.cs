@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +10,15 @@ public class Dummie : MonoBehaviour
     private GameObject virusObject;
     private GameObject uploadingBackground;
     private Image uploadingImage;
+    private GameObject uploadingText;
 
     private bool virusUploaded;
     private float virusTimer;
+
+    [SerializeField] private GameObject lightningPrefab;
+    private GameObject lightning;
+
+    private bool isDeactivated;
 
     private void Awake()
     {
@@ -19,6 +26,8 @@ public class Dummie : MonoBehaviour
         virusObject = canvas.transform.GetChild(0).gameObject;
         uploadingBackground = virusObject.transform.GetChild(0).gameObject;
         uploadingImage = uploadingBackground.transform.GetChild(0).GetComponent<Image>();
+        uploadingText = uploadingImage.transform.GetChild(0).gameObject;
+        Debug.Log(uploadingText);
     }
 
     private float tempSecond;
@@ -29,21 +38,30 @@ public class Dummie : MonoBehaviour
         {
             virusTimer++;
             tempSecond = 0;
-        }    
+        }   
+        
+        if (Input.GetMouseButtonDown(1) && virusUploaded && !isDeactivated)
+        {
+            lightning = Instantiate(lightningPrefab, this.transform);
+            lightning.transform.localScale = (this.transform.localScale / 2);
+            lightning.GetComponent<ParticleSystem>().Play();
+            uploadingText.GetComponent<TextMeshProUGUI>().text = "Deactivated";
+            this.GetComponent<AudioSource>().enabled = true;
+            isDeactivated = true;
+        }
 
         if (virusUploaded)
             return;
 
-        Debug.Log(virusTimer);
-
-        if (virusTimer > 500f)
+        if (virusTimer > 200f)
         {
-            Debug.Log("decrease upload");
             float uploadNumb = uploadingImage.fillAmount;
             float newFillAmount = Mathf.Lerp(uploadNumb, uploadNumb -= 10, Time.deltaTime);
             uploadingImage.fillAmount = newFillAmount;
         }
 
+        if (uploadingImage.fillAmount == 0)
+            virusObject.SetActive(false);
     }
 
     public void UpdateVirus(float amount)
@@ -53,6 +71,9 @@ public class Dummie : MonoBehaviour
         amount = amount / 100;
         uploadingImage.fillAmount += amount;
         if (uploadingImage.fillAmount == 1)
+        {
             virusUploaded = true;
+            uploadingText.GetComponent<TextMeshProUGUI>().text = "Uploaded";
+        }
     }
 }
