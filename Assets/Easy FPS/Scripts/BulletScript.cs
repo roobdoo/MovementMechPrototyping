@@ -28,7 +28,12 @@ public class BulletScript : MonoBehaviour {
 					Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
 					Destroy(gameObject);
 				}
-				if(hit.transform.tag == "Dummie"){
+				if(hit.transform.CompareTag("Dummie"))
+                {
+					GameObject dummie = hit.transform.gameObject;
+					Dummie dummieScript = dummie.GetComponent<Dummie>();
+					float amount = Random.Range(10, 30);
+					dummieScript.UpdateVirus(amount);
 					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
 					Destroy(gameObject);
 				}
