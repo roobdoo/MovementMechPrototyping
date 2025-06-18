@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 579329558410059092}
   m_Layer: 0
   m_Name: Terminal (2)
-  m_TagString: Dummie
+  m_TagString: Terminal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 7556123900705609133}
   m_Layer: 0
   m_Name: Terminal (3)
-  m_TagString: Dummie
+  m_TagString: Terminal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 6773750359871663099}
   m_Layer: 0
   m_Name: Terminal (1)
-  m_TagString: Dummie
+  m_TagString: Terminal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -586,11 +586,11 @@ GameObject:
   - component: {fileID: 7309583603925224424}
   - component: {fileID: 7653038749022009822}
   - component: {fileID: 3751124699655034280}
-  - component: {fileID: 7412326581061868070}
   - component: {fileID: 7268746158097846882}
   - component: {fileID: 6759582163882496720}
+  - component: {fileID: 4130825004810402591}
   m_Layer: 0
-  m_Name: Dummie V2
+  m_Name: Dummie V3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -669,20 +669,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7412326581061868070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3499767888600048474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33fdb5d8901c9164bb37a3df2c28f294, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightningPrefab: {fileID: 3077824016296839839, guid: 77455cb3ef5d3a248a77112181a977a5,
-    type: 3}
 --- !u!82 &7268746158097846882
 AudioSource:
   m_ObjectHideFlags: 0
@@ -801,6 +787,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4130825004810402591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499767888600048474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3712108ce341a648b3d4db0c3729b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightningPrefab: {fileID: 3077824016296839839, guid: 77455cb3ef5d3a248a77112181a977a5,
+    type: 3}
+  numbOfDisabledTerminals: 0
 --- !u!1 &4468132924634395390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,7 +1029,7 @@ GameObject:
   - component: {fileID: 5303787471665019232}
   m_Layer: 0
   m_Name: Terminal (4)
-  m_TagString: Dummie
+  m_TagString: Terminal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1135,7 +1136,7 @@ GameObject:
   - component: {fileID: 3775701033120234123}
   m_Layer: 0
   m_Name: Terminal
-  m_TagString: Dummie
+  m_TagString: Terminal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

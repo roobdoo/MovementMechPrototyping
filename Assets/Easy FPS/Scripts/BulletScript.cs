@@ -40,6 +40,20 @@ public class BulletScript : MonoBehaviour {
 					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
 					Destroy(gameObject);
 				}
+				if (hit.transform.CompareTag("Terminal"))
+				{
+					GameObject terminal = hit.transform.gameObject;
+					terminal.GetComponent<MeshRenderer>().material.color = Color.grey;
+                    GameObject dummie = hit.transform.parent.gameObject;
+                    DummieV2 dummieScript = dummie.GetComponent<DummieV2>();
+                    if (dummieScript != null)
+                    {
+                        dummieScript.numbOfDisabledTerminals += 1;
+                        dummieScript.UpdateVirus();
+                    }
+                    Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(gameObject);
+                }
 			}		
 			Destroy(gameObject);
 		}
