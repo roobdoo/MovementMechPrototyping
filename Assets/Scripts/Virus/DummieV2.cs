@@ -11,6 +11,7 @@ public class DummieV2 : MonoBehaviour
     private GameObject uploadingBackground;
     private Image uploadingImage;
     private GameObject uploadingText;
+    private GameObject followTrigger;
 
     private bool virusUploaded;
     private float virusTimer;
@@ -30,6 +31,7 @@ public class DummieV2 : MonoBehaviour
         uploadingBackground = virusObject.transform.GetChild(0).gameObject;
         uploadingImage = uploadingBackground.transform.GetChild(0).GetComponent<Image>();
         uploadingText = uploadingImage.transform.GetChild(0).gameObject;
+        followTrigger = this.transform.GetChild(1).gameObject;
         Debug.Log(uploadingText);
 
         for (int i = 0; i < (transform.childCount); i++)
@@ -61,6 +63,11 @@ public class DummieV2 : MonoBehaviour
             uploadingText.GetComponent<TextMeshProUGUI>().text = "Deactivated";
             this.GetComponent<AudioSource>().enabled = true;
             isDeactivated = true;
+        }
+
+        if (isDeactivated)
+        {
+            followTrigger.GetComponent<FollowTrigger>().enabled = false;
         }
 
         if (virusUploaded)

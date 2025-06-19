@@ -44,6 +44,7 @@ public class BulletScript : MonoBehaviour {
 				{
 					GameObject terminal = hit.transform.gameObject;
 					terminal.GetComponent<MeshRenderer>().material.color = Color.grey;
+					terminal.tag = "Untagged";
                     GameObject dummie = hit.transform.parent.gameObject;
                     DummieV2 dummieScript = dummie.GetComponent<DummieV2>();
                     if (dummieScript != null)
