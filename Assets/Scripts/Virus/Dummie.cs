@@ -11,6 +11,7 @@ public class Dummie : MonoBehaviour
     private GameObject uploadingBackground;
     private Image uploadingImage;
     private GameObject uploadingText;
+    private GameObject followTrigger;
 
     private bool virusUploaded;
     private float virusTimer;
@@ -27,6 +28,7 @@ public class Dummie : MonoBehaviour
         uploadingBackground = virusObject.transform.GetChild(0).gameObject;
         uploadingImage = uploadingBackground.transform.GetChild(0).GetComponent<Image>();
         uploadingText = uploadingImage.transform.GetChild(0).gameObject;
+        followTrigger = this.transform.GetChild(1).gameObject;
         Debug.Log(uploadingText);
     }
 
@@ -39,6 +41,11 @@ public class Dummie : MonoBehaviour
             virusTimer++;
             tempSecond = 0;
         }   
+
+        if (isDeactivated)
+        {
+            followTrigger.GetComponent<FollowTrigger>().enabled = false;
+        }
         
         if (Input.GetMouseButtonDown(1) && virusUploaded && !isDeactivated)
         {
