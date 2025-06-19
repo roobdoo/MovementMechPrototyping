@@ -10,9 +10,12 @@ public class FollowTrigger : MonoBehaviour
 
     private float moveSpeed = 5;
 
+    [SerializeField] private float height;
+
     private void Awake()
     {
         dummie = this.gameObject.transform.parent.gameObject;
+        height = dummie.transform.position.y;
     }
 
     private void OnTriggerStay(Collider other)
@@ -39,11 +42,22 @@ public class FollowTrigger : MonoBehaviour
             return;
 
         if (Vector3.Distance(dummie.transform.position, player.transform.position) < 15f)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            player.GetComponent<PlayerMovementScript>().accelerationSpeed = 0;
+            DummieV2 dum2 = dummie.GetComponent<DummieV2>();
+            if (dum2 != null)
+                dum2.caughtScreen.SetActive(true);
+            Dummie dum = dummie.GetComponent<Dummie>();
+            if (dum != null)
+                dum.caughtScreen.SetActive(true);
             return;
+        }
 
         Vector3 playerPos = player.transform.position;
         Vector3 targetPos = Vector3.Lerp(dummie.transform.position, playerPos, 0.5f * Time.deltaTime);
-        targetPos.y = 9f;
+        targetPos.y = height;
         dummie.transform.position = targetPos;
     }
 }

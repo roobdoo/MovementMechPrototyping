@@ -21,6 +21,8 @@ public class Dummie : MonoBehaviour
 
     private bool isDeactivated;
 
+    public GameObject caughtScreen;
+
     private void Awake()
     {
         canvas = this.transform.GetChild(0).gameObject;

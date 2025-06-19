@@ -24,6 +24,8 @@ public class DummieV2 : MonoBehaviour
     private float numbOfTerminals;
     public float numbOfDisabledTerminals;
 
+    public GameObject caughtScreen;
+
     private void Awake()
     {
         canvas = this.transform.GetChild(0).gameObject;
